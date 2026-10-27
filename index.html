@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10243a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>HDL Transportes</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="login" class="login-wrap">
+  <div class="login-card">
+    <div class="login-hero"><div class="truck">🚛</div><div><div class="brand">HDL <span>Transportes</span></div><p class="sub">Controle de abastecimentos, serviços e despesas da frota.</p></div></div>
+    <form onsubmit="event.preventDefault();App.login(document.getElementById('loginBtn'))">
+      <h3 style="margin:6px 0 10px;font-size:18px">🔓 Entrar</h3>
+      <div class="field"><label for="username">👤 Usuário</label><input id="username" autocomplete="username" autocapitalize="none" placeholder="Seu usuário" required></div>
+      <div class="field"><label for="password">🔒 Senha</label><input id="password" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
+      <button type="button" class="ghost" onclick="App.togglePassword(this)" style="color:#667085;padding:6px 10px;font-size:12px;margin-top:2px">👁️ Mostrar senha</button>
+      <div class="actions"><button id="loginBtn" class="primary full" type="submit">🔓 ENTRAR</button></div>
+    </form>
+  </div>
+</div>
+<div id="app" class="app hidden">
+  <aside id="sidebar" class="sidebar">
+    <div class="brand"><span class="mini-truck">🚚</span> HDL <span style="color:#8fbdf0">Transportes</span></div>
+    <div class="nav-label">VISÃO GERAL</div>
+    <button class="nav-btn active" data-page="dashboard" onclick="App.showPage('dashboard')"><span class="ico">📊</span> Painel</button>
+    <button class="nav-btn" data-page="new" onclick="App.showPage('new')"><span class="ico">⛽</span> Novo abastecimento</button>
+    <button class="nav-btn" data-page="newservice" onclick="App.showPage('newservice')"><span class="ico">🔧</span> Novo serviço</button>
+    <button class="nav-btn" data-page="history" onclick="App.showPage('history')"><span class="ico">🧾</span> Histórico</button>
+    <div data-min="2">
+      <div class="nav-label">GESTÃO</div>
+      <button class="nav-btn" data-page="vehicles" onclick="App.showPage('vehicles')"><span class="ico">🚛</span> Minha frota</button>
+      <button class="nav-btn" data-page="drivers" data-min="3" onclick="App.showPage('drivers')"><span class="ico">👥</span> Usuários</button>
+      <button class="nav-btn" data-page="ranking" onclick="App.showPage('ranking')"><span class="ico">🏆</span> Ranking</button>
+      <button class="nav-btn" data-page="alerts" onclick="App.showPage('alerts')"><span class="ico">⚠️</span> Alertas</button>
+      <button class="nav-btn" data-page="reports" onclick="App.showPage('reports')"><span class="ico">📈</span> Relatórios</button>
+      <button class="nav-btn" data-page="audit" data-min="3" onclick="App.showPage('audit')"><span class="ico">📜</span> Auditoria</button>
+    </div>
+    <div class="nav-label">CONTA</div>
+    <button class="nav-btn" onclick="App.logout()"><span class="ico">🚪</span> Sair</button>
+    <div class="sidebar-footer">v4.0 · Supabase Auth + RLS</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="secondary mobile-menu" onclick="App.toggleMenu()" aria-label="Menu">☰</button><strong id="topTitle">Painel</strong></div><div class="user-pill"><div class="avatar" id="avatar">A</div><div><div id="userLabel"></div><div id="userRoleLabel" style="font-size:11px;color:#667085;margin-top:2px"></div></div></div></header>
+    <div id="content" class="content"></div>
+  </main>
+</div>
+<div id="toastWrap" class="toast-wrap"></div>
+<div id="modalWrap"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
